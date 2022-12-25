@@ -1,3 +1,28 @@
-body{margin:0;padding:0;width:100%;height:100%}.content_img{display:block;margin:0 auto}.topic_image img{max-width:100%;height:auto;display:block;margin:0 auto}.viewCenter{text-align:center}.mainTextLine{font-size:small;color:gray}.canvas{display:block;margin:0 auto}.topic{text-align:center;margin：0 auto;width:100%}.topic img{height:auto;top:0;bottom:0;left:0;right:0;width:100%;margin:auto}a:link{color:#3b7eaa;text-decoration:none}a:visited{text-decoration:none;color:#3b7eaa}a:hover{text-decoration:none;color:#3b7eaa;text-shadow:gray 2px 2px 2px}a:active{text-decoration:none;color:#3b7eaa}h1{margin:0}#directLinks{text-align:center;font-size:small}.menuLinks{padding-top:5px;padding-buttom:5px}.contentTitle{text-align:center;text-shadow:gray 2px 2px 2px}#copyright{padding-top:5px;font-size:small;text-align:left;font-size:x-small}#main{margin:0}.pageItem{clear:both}.topic_image{text-align:center;margin:0 auto}.preContent{margin:0 auto;text-align:center}#trackBackUrl{color:gray}.show{background-color:white}.scroll{background-color:black;position:absolute;opacity:.5}.pageMenu ul li{display:inline-block;padding-right:3px}.pageMenu ul{list-style-type:none;padding-left:0}
+body{margin:0;padding:0;width:100%;height:100%}
+.content_img{display:block;margin:0 auto}
+.topic_image img{max-width:100%;height:auto;display:block;margin:0 auto}
+.viewCenter{text-align:center}
+.mainTextLine{font-size:small;color:gray}
+.canvas{display:block;margin:0 auto}
+.topic{text-align:center;margin：0 auto;width:100%}
+.topic img{height:auto;top:0;bottom:0;left:0;right:0;width:100%;margin:auto}
+a:link{color:#3b7eaa;text-decoration:none}
+a:visited{text-decoration:none;color:#3b7eaa}
+a:hover{text-decoration:none;color:#3b7eaa;text-shadow:gray 2px 2px 2px}
+a:active{text-decoration:none;color:#3b7eaa}
+h1{margin:0}
+#directLinks{text-align:center;font-size:small}
+.menuLinks{padding-top:5px;padding-buttom:5px}
+.contentTitle{text-align:center;text-shadow:gray 2px 2px 2px}
+#copyright{padding-top:5px;font-size:small;text-align:left;font-size:x-small}
+#main{margin:0}
+.pageItem{clear:both}
+.topic_image{text-align:center;margin:0 auto}
+.preContent{margin:0 auto;text-align:center}
+#trackBackUrl{color:gray}
+.show{background-color:white}
+.scroll{background-color:black;position:absolute;opacity:.5}
+.pageMenu ul li{display:inline-block;padding-right:3px}
+.pageMenu ul{list-style-type:none;padding-left:0}
 .menuTable{width: 50%;margin:auto;text-align:center;}
 .header{font-size:2em;text-align:center;color:gray;}
