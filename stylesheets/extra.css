@@ -1,0 +1,43 @@
+:root {
+    --md-primary-fg-color: #111827;
+}
+
+.md-grid {
+    max-width: 1500px;
+}
+
+.md-content {
+    line-height: 1.95;
+}
+
+.md-typeset {
+    font-size: 18px;
+}
+
+.md-post,
+.md-typeset table,
+.md-typeset pre {
+    border-radius: 20px;
+}
+
+.md-post {
+    padding: 28px;
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow:
+        0 8px 40px rgba(0,0,0,.06);
+}
+
+.md-header {
+    backdrop-filter: blur(18px);
+    background:
+        rgba(255,255,255,.72);
+}
+
+.md-typeset h1 {
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.md-typeset h2 {
+    font-weight: 700;
+}
