@@ -1,0 +1,626 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="前面说到，没有分号结束的语言，一眼看去就是上不了台面的，逢人说起我会编程，人家问起会什么语言，VBScript 说不出口，虽然后来我用 Jscript 重写了一遍，有分号结束了，看起来也像那么一回事了，但依然是不能用少的东西控制多的东西……指针，才是这个故事的核心，现在仅仅第二篇，我就先卖个关子。">
+      
+      
+      
+      
+        <link rel="prev" href="../20240721/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT。（二） - LiangYichen</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="LiangYichen" class="md-header__button md-logo" aria-label="LiangYichen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiangYichen
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT。（二）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="blue"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LiangYichen" class="md-nav__button md-logo" aria-label="LiangYichen" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    LiangYichen
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到主页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    元数据
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-05-20 00:00:00+00:00" class="md-ellipsis">2026年5月20日</time>
+                      </div>
+                    </li>
+                    
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              需要 7 分钟阅读时间
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">C#</span>
+      
+    
+  </nav>
+
+
+
+  <h1>我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT。（二）</h1>
+
+<p>前面说到，没有分号结束的语言，一眼看去就是上不了台面的，逢人说起我会编程，人家问起会什么语言，VBScript 说不出口，虽然后来我用 Jscript 重写了一遍，有分号结束了，看起来也像那么一回事了，但依然是不能用少的东西控制多的东西……指针，才是这个故事的核心，现在仅仅第二篇，我就先卖个关子。</p>
+<!-- more -->
+
+<p>上一篇获得很多留言，也催我快更新续集，这不续集来了，已经两年过去。</p>
+<p>接续上一篇《我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT》</p>
+<p>前面说到，没有分号结束的语言，一眼看去就是上不了台面的，逢人说起我会编程，人家问起会什么语言，VBScript 说不出口，虽然后来我用 Jscript 重写了一遍，有分号结束了，看起来也像那么一回事了，但依然是不能用少的东西控制多的东西，我哪懂什么叫引用类型什么叫值类型，看起来都是var，就靠猜，如果发现有什么东西被间接修改的话，先把它 var taget = ""+a ; 再 var value = parseInt(target) 就行了。</p>
+<p>虽然说 Server.CreateObject("ADODB.command") 和 Server.CreateObject("ADODB.recordset") 再加一些 if else ，while 和 switch 什么的拼凑一下，Access里面创建一个查询表达式模拟存储过程（别提SQL Server，我们买不起），我们的小网站架设就没问题了，但是就长远来看，这个小网站的应用技术两个月就已经到头了，再怎么苦修也很难有上升的余地，而当时的各种技术论坛以及QQ群中，人家开口闭口就是链表、排序、内存、接口…… ，这正那是本16块钱的《C语言程序设计》中经常提及的东西，我虽然有电脑做实验但是没有实践的机会，也没法和人家搭上话，每天来来去去就是变着法的写 Select * From Users Where Id = '%id'。  算了等以后有机会练就用武之地再说。 </p>
+<p>这时候也迎来了第二门实际应用语言: RSL。我们要做室内室外3D效果展示，好在老师也是通情达理，想用什么软件都可以，学校主推的是 3DS MAX。各行各业都一样，说得委婉叫先玩工具，说得真实叫人性，以至于很多年后，经常有人问我：“你用什么牌子的相机？”，我知道他们接下来要说什么：尼康偏黄、佳能偏红、索尼偏绿，反正如果回答其中任何一个都会被怼，我的答案是：拿你的作品拜读一下，言下之意：老子没兴趣和你掰扯。但在当时，我也是工具党，报刊亭上经常有一些3D CG杂志，我了解到 Maya是C， 3D Max 是 ASP，这次我看上了C。</p>
+<p>然后我就开始混3D CG论坛，玩工具，不但玩Maya，还有犀牛、Lightware、最后玩渲染器，一开始，Maya 5 自带有MentalRay，那光线追踪出来的效果，你们玩3DSMax的再过一百年都没这水平，还有Vray，那玻璃效果也是甩你们3DSMAX一千年、还有一个完全免费的叫什么现在想不起了，总之都是一键可以藐视别人的功能，我就经常制造一些光线特别复杂的场景、还有HDR贴图等等、沉浸在这些让人一看就觉得很厉害的效果中，一直到我混论坛看到了一个人：MayaX，我叫他马叔，能浏览他的众多帖子是幸事，教人从邪路走上正途。</p>
+<p>上一篇我提到帮同学配电脑，奔腾4 1.6 + 850芯片组提供满带宽的256M双通道Rambus内存 + ATI 8500显卡（刷FireGL）， 后来发展到 Athlon 64 X2 2.0G + nforce 芯片组提供满带宽的双通道 DDR2  256M内存 +  ATI 9500 显卡（刷FireGL）， 我经常过去玩这两套系统， 实事求是的说，它们就是全校最强的系统，但是，我却不惜花费2小时在上面，在MentalRay上把光线追踪深度开满、抗锯齿开满，就为了渲染一张效果图，在遇到马叔之前，这就是成功的路，但在学习了他的知识之后，黑白颠倒：如此高速的电脑上，一张图2小时，不管你的图有多漂亮，这都是失败，你只是一个按下按钮的人，离开了MentalRay，你什么都不是，堆硬件+参数拉满就是你的版路、你甚至连按钮都按不全、就是个失败的人。</p>
+<p>中间的各种思维风暴转换就不赘述了，我依然玩渲染器，但是也深刻认识到把铠甲当成是自己的肌肉是不对的，改玩 PrMan 了，这是Renderman标准的Pixar实现，它的核心思想是一切靠自己来，光线追踪的间接反射是可以通过贴图模拟的，全局光照的本质是灯光阵列，这也是可以手动实现的，甚至是根本就没必要每一帧都做这样的渲染，我可以通过把第一帧的某些光照效果做成贴图缓存，剩下的同一场景内的渲染都可以重复利用这个贴图缓存，在动画中得到极大的效率提升，另外还有一种自制HDR缓存的办法，也可以应用在Prman中，这是从《Maya的艺术》这本书中学来的。</p>
+<p>而这当中最重要的，是RSL语言，全称是 Renderman Shading Language，就是一个可以自己编写光照效果的小型编程环境，它是一个C风格的脚本，用javascript 的话来说就是你可以编写很多的function，GUI界面按钮列表中就能调用它们来渲染场景或者做模型贴图的处理。所以在这期间也经历了一段时间的小编程，有分号结束的那种。</p>
+<p>在编写RSL的过程中，需要自己设计整套流程的算法，这是核心思想，今天我已经忘光了RSL的各种关键字了，但是当时为了研究各种光照算法养成的自己动手的习惯，得以延续到今天。自我实现并不是重复造轮子，所谓造轮子，是一眼可以看完那圆形的物体是用来干嘛的，它是已经不可再分解的、没有“内部原理”可以再去探究，造这样的东西是多余，但我们的东西是可以再拆分的、一个复杂的盒子，需要查看它的内部、实现它的内部、理解为什么要这么做，别人的通用解决方案是否适合自己的当前需求，这当中有什么可以面向自己的改进的余地，这是区别。</p>
+<p>说到自制HDR贴图，需要拍照（然后按照不同的亮度进行扫描，这就不说了），按照书中的原教旨主义，作者说要用反转片，我就省吃俭用买反转片，在那个时代，一卷富士维尔维亚50ISO的胶片，要50块钱，接来下还要冲洗，25块钱，最后还要晒照片，普通的负片照片6寸的只要8毛，拿反转片去晒照片要一块五，这是南宁永恒与新华两家冲印店的价格，那么算一下，一张照片拿到手里的成本要三块五，最后还要扫描成TIF（扫描仪是自己的，就不算成本了），那个时候的三块五是什么概念呢，我在学校食堂吃一顿正常的饭是六块钱，这是不省，也不奢侈的很多同学的正常标准，一张照片就是半顿饭，一卷胶片36张，洗印成照片拿到手里，总成本120多块钱。</p>
+<p>作者是美国人，他所推荐的柯达Chrome 100是5美元一卷，他的收入是3000美元，他可以买一卷扔一卷，比手纸还便宜。 我这个学生的收入折合65美元，买7美元的富士 Velvia 50，这是自杀，换了如果是中国的作者，谁敢这么推荐，一两个月过去后，这么挥霍反转片是不行的，已经严重影响了生存，没错，我用的词就是“生存”。但是路不能断，我就退其次，用柯达负片拍照，只需要16块钱一卷，洗照片也便宜，一张照片的全部成本可以降低到1.2元，但是随着拍摄的内容越来越多，这么搞还是贵，这时候我遇到了学院里另一个系的同学，也是一天到晚背着个相机在学院里走来走去的，我们很快就天天搞到一起去，学院里有图书馆，我们在里面系统化的学习到关于光圈快门最基础的知识体系，《纽约摄影学院摄影教材》也有，但是这本书没有江湖上吹的那么神奇，相反的，在南宁民族苑旁边有一家书店，我在里面找到一本冯建国著的《亚当斯分区曝光法》，这本书才是彻底结合了从曝光到冲洗的完整流程控制，他可以在批发市场找到8块钱一卷的乐凯黑白卷，而我则经常在色影无忌论坛上收集各种冲洗胶片的配方，这些化学原料一样可以在批发市场买到，我们就自己调配胶片冲洗药物，这么一来，一整套流程就可以完全由自己控制了，半年下来，我们已经可以任意控制ISO了，一卷市面上ISO100的胶卷，结合自己调配的针对性冲洗配方，我们可以随意改变它为25-800，而从前去冲印店必须一次性冲洗以及晒印整卷36张照片，一下子要掏出50块钱，现在可以我想拍一张就只拍一张，想拍两张就只拍两张，成本任意控制，相片纸也是我们自己买的，自己晒印，1个小时后可以让照片拿在手上，同时，他也在音乐系接了一些活，为那些毕业生拍毕业照，我们也增加了一些额外的小收入，用今天的话说就是开源节流。</p>
+<p>成本控制就是那时候学来的，虽然是不同的领域，但钱都是相同，以至于往后，我的很多项目都是以这样的理论作为指导：CPU要耗满、内存要接近地平线。</p>
+<p>刚学拍照的时候有一道难过的坎，如果你的曝光不对，这快门一按下去就是两块钱打水漂，以及不可再找回的机会。别说什么凑合着能看就行，我们没有这种概念，虽说如果拍错可以通过改变ISO和更换药水来弥补，但这是毒品，药水服务胶片，人就能长进、胶片服务药水，人就会堕落，用今天的话来说就是，拍照依赖后期，100%是山寨货，这条道理从古至今，以及未来都是。我们必须掌握100%的完美曝光，但是2002年的两块钱，不允许进行海量的实验，于是我们就靠互相猜曝光来练习：相机内置有测光表，我们调整为点测光，面对一个场景，就互相问：你说，这个树荫下面纯景要多少快门、人站在下面还原皮肤色阶需要多少、背景云朵要多少、全场景平均需要多少？ 等着对方答完，根据他的答案，提问的人拿着相机测光表一一去测，看他说得对不对， 最后，你预期照片上会得到什么样的颗粒画质？这时候才拍一张，并且把这些猜测都一一写在纸上，拿回去完全依照想法，使用他当时嘴里说的ISO对应药水冲洗，照片洗出来后对照着当时纸上写的，验证这是否是他最初脑子里所想的效果。这样的训练一个学期下来，从最初测光表与嘴里猜的完全不是一回事，到后来能够通过肉眼判断就说得八九不离十了，我们已经可以完美还原水杯折射光线、金属托盘上的一团白纸、纯白/纯黑衣服搭配下的肤色、余晖人像、正午白云天的人像 ……</p>
+<p>在学习3D CG底层光照的过程中，通过虚拟场景的实验，我掌握了一些光照的理论，结合RSL，也得到了一些实践的机会，但总归，RSL依然不能用少的东西来控制多的东西，它只是一系列的强类型的function而已。而论坛中别人在讨论光线追踪与全局光照算法时，看到他们的那些代码，那种感觉就是每一行都看得懂，但就是不知道整个函数是干什么的。</p>
+<p>但这些已经不那么重要了，因为有一天我突然想到，如果往前追溯这一系列学习的目的： 努力学习摄影是为了得到更好的照片， 得到更好的照片是为了更好的制作HDR素材，制作HDR素材是为了创造更好的3D CG，创造更好的 3D CG 是为了什么？ 不用追究了，立即切断这条线。</p>
+<p>半年过去后，我的兴趣已经不在3D CG上面，书摊依然会经常去，但是购买的书籍，也从CG杂志变成了《国家地理》（那个时候是可以公开买得到的，有台版的，也有英文原版的）。我就和这位隔壁系的同学，有人要拍毕业照就去接活，没活的话我们就去拍风景，就这么摇身一变，2003年我俩都成为了业余摄影师，而那枚发亮得可以当作夜明珠的 visual studio 2003光盘，也蒙上了厚厚的一层灰。</p>
+<p>另一条支线却延续着，我们的小网站离不开我做技术维护，虽然它在我生活中的占比已经很小很小了，但是我们那个社区没有其他人可以做这件事，他们不是已经工作了，就是因为学业太忙，少有的两位在成都，能时不时补充一些 HTML 页面上来，而作为长远计划的论坛与主站的数据融合方案，只能是我来一步步策划与补充，而仅仅是这个计划，一做就是两年。</p>
+<p>一开始，我研究了一下动网论坛的表结构，Users 自然不用多说，那个内容表叫什么现在想不起了，它有一个字段，这个字段如果空，这就是主帖，如果有值，这个值对应的就是另一个主贴的ID，当前行就是作为帖子的回复，另外还有一个字段，关联着 Users 的 ID，这样的话只需要一个 Inner Join 查询，写入一个 RecordSet，我们就可以在主站上做类似“最新新闻”这样的小栏目了。</p>
+<p>日子一天天过去，毕业了，那年夏天，也不知道还算不算暑假，我也依然在研究黑白胶片转化为黑白反转片的办法，而我的所谓“官方专业”，既不是摄影，也不是编程，直到天气渐渐变冷了，我在深圳华强北找到一个做广告平面设计的工作，这才是所谓的“门当户对”。半年后，我走了，不是我的问题，也不是公司的问题，干这个职业我是全身每一个细胞都不舒服，我不想针对这个行业说不好的话，别人也不要拿所谓的“学校专业”来套我，什么推荐信什么经验作品，老子早就一把火点烟去了，我不是这个行业的一员，我说不是就不是，就这样。 </p>
+<p>几个月后，我带着相机，在重庆朝天门、瓷器口、青城山、到处瞎转，当时的胆量也仅限于此，不久第二个冬天来临了，又辗转到了另一个城市。多年来，无论身份与兴趣怎么转换，我们的小网站一直由我在维护着后端以及更新迭代，这条支线从未中断，而在这个冬天，靠着多年来维护它，慢慢练就了“真正的专业”，也找到了真正对应的工作：ASP程序员。</p>
+<p>同事们会问我这个艺术专业毕业的为什么会选择做这个，我不想解释太多，就说我不是那个专业，如果再继续追问，我就会反怼你这样的逻辑还能写代码吗？ 总之，相比起平面设计的那一股子恶心感，我写ASP代码时丝毫不会有同事们所说的“累”，而喊累的他们，才是真正的“科班出身”，但他们现在无奈被迫的工作，就如同上一份工作消耗我那样，正在消耗着他们的身心。</p>
+<p>这份ASP工作是自己从公司的任务池里面挑选自己可以接的任务，向上汇报一下，说这个任务我来做，就可以了，有ASP的、有PHP的、有JSP的，以及极少数的ASP.Net。 很多的任务都可以通过Dreamweaver 拖拉控件的方式就完成了界面，这在当时是一个半偷懒的方法，只要首先你能自我保证这个任务是一次性开发的，肯定不会返工修改的就行，要不然的话这样的开发方式一定会在反复的编辑中造成码毁人亡，原因是如果使用记事本打开那些所谓的asp文件来查看，虽说是asp没错，实际它没有可维护性，一碰就坏，而且dreamweaver的控件编辑模式一定会在这份代码在达到某个复杂程度后，它自己都会在代码完好的情况下报错，更何况是人呢。</p>
+<p>上一篇说过那个唯一教过我编程的人，他写的那份几十行的asp代码，我就拿出来再看，得益于之前已经有过一次研究了，这一次再根据工作上的业务需求，脑海中先做一遍快速分析能不能自己来手写实现，我就硬着头皮反复对照着dreamweaver生成的垃圾堆，终于搞懂了它那些重复的垃圾模块是没有上下文关联的，就比如说一个商品详细页，肯定要显示发布者、所属类别、商品本身信息、只需要做 Inner Join + Left Join 的一次性查询，就可以得到所有的信息，而dreamweaver需要做三次 Conn 的重复开启外加三次独立查询，然后拿两个RecordSet来进行嵌套循环分析，性能效率什么的也就没必要分析了，当前重要的是如何把一个不可维护的东西改为可维护的，我记得有一次是400多行的垃圾堆吧，我根据需求重新手写，只需要50多行，当然这开发速度也是不可接受的，dreamweaver 的鼠标拖拉只需要4分钟，我手写花了4天。毕竟这是第一次，思考成本的占比很大，以后慢慢的不需要那么长时间的思考了，总归是变得可接受的，往后一段时间我就在下班后、晚饭后、思考着这个问题，怎样做到开发效率与可维护之间的平衡。</p>
+<p>最后结论：dreamweaver 只认它自己生成的那一套垃圾格式，只要你稍微做一点点改动，它的可视化就失效了（但是运行结果是好的），这不止是在服务端控件的呈现上是这样，就连纯HTML的呈现也是这样，那这么一来，我就只能放弃可视化了（今天的话说叫Code-First），一开始会觉得这个念头有点恐惧，后来考虑了几天，不妨找一个最简单的项目来试试，果然有一次找到机会了，那是一个与同事合作的子项目，我承接的这一部分，按照以往的经验，两天时间就可以完成，而这次我使用纯手动方式开发，搞了四天，后来整个项目交货出去了，客户那边说还需要反复修改，也不知道是祸是福，我承接的这一部分当然也涉及到修改，但是往后我的修改很顺利，因为当初我是全用class来实现css重用，拒绝用style，所有的服务端代码都聚集在一处，并且分离为conn、command、recordset 三处架构，以组合的方式来进行简化，html中最多只引用一个&lt;%=var&gt;来调用服务端变量结果，这样达到了最大化的简化与清晰（其实还可以通过服务端XmlDocument来构建html段落，当时不知道），反过来想想如果一开始是使用dreamweaver拖拉控件，说不定现在会花更多的时间来调整，这种一开始花大价钱构建可靠架构的方式，一直得以延续到今天。（后来我换了好几处工作，语言换过、业务换过，唯一不变的就是底层原则：这个段落必须是可维护，让别人能看懂，否则别干了。而这个原则，也就是在这时候与Dreamweaver的搏斗中生成的。）</p>
+<p>往后经历了几个项目下来，开发模式的转换得以在底层上摆脱了dreamweaver，它从最初的完全依赖变成了现在的只是一个可视化参考工具，以及它有一些少许的智能提示，可以避免把 Request.Form 错写成 Request.From（我是确实被这个笔误搞了半天不知道错在哪）。直到今天，我也不知道别人是用什么IDE来编写ASP的，和我坐在一块的另一个同事也是使用dreamweaver，反正visual studio 2003 以及以后版本中肯定没有开发asp的功能，visual studio 6 的那一套我看不懂，印象里也没找到过可以创建asp项目。</p>
+<p>时间渐渐进入了2005年，Ajax 来了，那一年到处流行前后端彻底的分离，今天我们都知道open方法必须是第三个参数为true才是异步，但是我学习的那时候，就和 C井的Hello World一样离奇，测试服务器是在海外的，我创建好一个测试页面，把别人在csdn中的例子复制粘贴过来，上传后反复刷新发现有时候会显示结果（注意我说到【反复刷新】），有时候不会，发现这东西怎么这么不可靠的，后来又看到有个人说改为false就可以了，也没问他为什么false才可以，我就照着改，果然false才是可靠的，就这样搞了好几个项目都是填写的false，直到第四个项目，要为其中一个页面添加用户名显示的功能，我懒得修改一大堆的东西了，就想通过简单加一个标签，ajax给它把用户名加载到那个标签中就算了，当时我的电脑已经打开了很多东西，运行很慢了，不方便再启动本机测试，我就直接改完代码就上传到服务器去了，反正ajax我已经是可以默写出来了，不可能出错，但偏偏这时候我没写第三个参数（不写的话就是默认为true），反正，用户名是显示出来了没错，可我就发现了一个反常识的事情：大概过了两秒钟，用户名才会加载出来，有时候是主框架加载完后，有时候是主框架加载到一半时，有时候是主框架仅仅加载前面很少的部分时，反正时间差距很大，我就回去看ajax代码，原来是false参数忘记写了，那就写上，这次算是修复好了，基本上都是主框架加载到用户名标签附近的时候用户名就显示出来了，这才是靠得住的。 </p>
+<p>但是那个离奇的时间差异那么大的加载方式引起了我后续好几天的临时思考，那是怎么回事？ 话说回来它也是能加载的，这就迫使我回去再次打开当初学习时的那个例子，把它改为true， 这次我没有反复刷新，才发现它的结果加载就和项目上一样，加载时机是未知的，原来是我当初鼠标按得太快了，还没等待结果传送过来我就刷新了，因为服务器是在海外的，延迟会很高，如果没有足够的等待时间就进行刷新的话，当然会得出“有时候得不到结果”的结论，我就搭建了一个本地环境来验证true参数，果然，在本地环境中，true和false是一样的，都是瞬间加载完成，那这么一来的话，这两者的差异在哪里呢？再次迫使我翻看原始的关于XmlDocument的教程（IE6的天下，就是XmlDocument），这一看下来，原来true才是真理，我之前的false用法根本就不叫Ajax，那个只能叫Jax，我甚至连什么叫“异步”都不知道，只管反正数据是从服务器来的就行了，更多的什么页面卡不卡顿的细节就不赘述了，反正走入正道之后，以后也遇到了XMLHttp代替了XmlDocument，今天Fetch又代替了前面两者，而“异步”的概念第一次映入脑中，也是从这个时候开始的。</p>
+<p>至此，无论是客户端，还是服务端，我都完成了“分号结束”的转换，甚至时不时的，我还可以开玩笑不屑一下隔壁的同事：我有Prototype继承，我还可以客户端和服务端共用代码，你那VBScript 做不到。玩笑归玩笑，我自己也知道每天编写的代码都是什么货色，2006年，那些能上台面的Java和C++，在每一期的《程序员》杂志中都占据了很大的版面，虽然我没有实践的机会，但也知道行业的风向，时不时的看一下招聘信息，很清楚照照镜子可以看到自己算哪根葱。</p>
+<p>我的职务身份是ASP程序员，接触不到那些高级货，虽然说任务池里面有几个项目是.Net的，但是我现在的功力火候只能写Hello World，另外有几个任务是JSP的，我的Java功力比C井的Hello World强一些，毕竟《Java程序设计》是1999年买的，而且 Hello World 也没遇到困难，《C井程序设计》2001年才买，折腾了很久才搞出 Hello World，我怕还会出现更多幺蛾子，于是我挑了一个任务周期很长的JSP任务，而且是比较简单的那种。</p>
+<p>Java 好在哪我感觉不深，重要的是 Eclipse 上有很多看不懂的按钮，找调试都得找半天，比起 dreamweaver 显得更有面子了，这就距离那时候在书城里遇到的那位高手说的BEA什么听不懂的东西，又进步了一些。</p>
+<p>时间又过去了半年，因为有了实践，所以这期间我也能看懂《程序员》和CSDN上说起的更多的关于Java的内容了，一个美好的蓝图就如同Sun的初衷那样，一次编译，处处运行，我今天写JSP，明天就能接桌面，后天还能接塞班……而且，我能操作真正的面向对象了，那Prototype是什么东西，都懒得再回头看它一眼，逢人就提起接口和多态，还能怼别人说“你们的多重继承不安全”、“我是真正的跨平台”、“你要先编写接口……啊……原来你的语言没有接口”、“我看不懂缩进代码块” …… 看得懂这些话是针对谁的，就能体会到我有多大胆，这就是人性，并且是最底层的劣性。</p>
+<p>时光荏苒，工作有了变动，生活也有了变动，我又一次来到了桂林，第一本编程书籍《C语言程序设计》在这买的，指针也是在这学来的，是不是预示着回归？</p>
+<p>这里的工作不需要编程，工作单位是教别人编程的，但我的职务与编程不相关，也不教人，也就是个闲职，我就每天做编程实验，以及维护我们的小网站，这个环境也给了我一个练就功夫的时机，就像当年学摄影要把冲洗胶片也掌握个烂熟那样，我就去书城里找《数据结构》，桂林这城市说大不大，说小也不小，能买到就已经很不错了，就别指望是什么语言了，也有可能是缘分，这次依然是C的，虽说十年后的今天我已经有了笔记本电脑，随时随地可以实践，但是我依然选择了互猜曝光的方式来进行训练，只不过这次只有我自己和自己玩了，配套的训练工具不是电脑，而是一盒扑克牌，拿出一套花色的A-K就可以了，随时拿出来打散后练排序，你还别说，一开始学习各种排序的时候，如果是在电脑上面反而还不好理解，可是使用扑克牌的话，冒泡排序是最容易理解学会的，其次是选择排序，再到插入排序…… 因为眼睛是可以看着上一次迭代的那个牌在什么地方，下一张牌又是在什么地方，而如果换了是屏幕上的递归写法，要思考个半天才明白是怎么回事。 </p>
+<p>背诵互易律与时间温度换算表，目的是为了全程服务于曝光与显影，最终拿到照片，这就是学习的目的，而且目的是很快可以达成并且验证的，这一整套完整的流程可以造就长期的记忆。 但是学习数据结构，为了使用更少的步骤排列一段乱序的集合，然后呢？排好了就怎么样，排不好又怎么样？学来干什么？ 如果没有一个目的以及看得见的成果的话，难不成我学来上街逢人就说我会数据结构，你会吗？ </p>
+<p>这时候目光就投向了我们的小网站，大的方向说是维护，往细节里说了是挑一些不起眼的页面来做新式实验，因为工作有了点钱，可以把它从虚拟空间迁移到一个更高级的平台，Godaddy 的一个介于虚拟空间与VPS之间的（今天已经找不到了），不知道这是什么高科技的空间，叫不出名字，它既可以承载ASP，也可以承载ASP.NET，送数据库，这都不重要，反正就是可以做很多实验，不受技术限制的，它当前的弱项在于打开一个详细内容页，需要附加查询所属类别、作者、留言、留言者、留言按照时间排序分页、相关内容摘要、上一篇的标题、下一篇的标题，反正这个页面是浏览者可以感知的很慢，这么多的东西，理论上可以多做几次 Inner Join，在一次查询中完成，虽然我没什么技术沉淀，但就是感觉四层 Inner Join 嵌套的话肯定会出事，所以目前是留言信息单独再做一次查询的，这两次的查询里面都是用到了 order by pubdate desc，而pubdate字段是没有索引的，这样的倒序排列造就了两次全表扫描，留言难道b表本身就是很大的表，这就是内容页之所以慢的根源，现在我打算使用Server.Application["reply"]在内存中构建一个热点留言缓存，构建100条就可以了，这样估计只需几十KB的内存，我们针对热点数据既可以去掉Inner Join，也可以在这100条数据的内存中进行倒序排列，这既减少了数据库的负担，也可以让数据结构有了用武之地（哈希表+数组反转）。</p>
+<p>理论是美好的，现实很残酷，我们的小网站所依赖的 ASP-Jscript，承载不起这么大的架构更新，期间我还设想了一种使用Server.CreateObject("XmlDocument")进行服务器间的Ajax，期望将来可以在桌面端和手机端直接调用内容（这就是多年以后《两年来的core折腾之路几点总结，附上nginx启用http2拿来即用的配置》一文中提及的双循环架构的雏形），一定要硬着头皮写的话，可以写出来，但是这已经是网站的第六个版本了，那时候我也不懂什么高内聚的说法，就只知道六次迭代的经验告诉我胶水式的组合一定会失败。那么，既然我现在这么有空闲时间，干脆一次性把小网站升级到第七个版本吧，使用更现代的框架，而且前面有了工作经验，使用JSP来搭建更优美的架构。</p>
+<p>只需要几天，整个新架构设计好了，它全面依赖“机器间通讯”，使用ATOM格式来传输所有的内容，客户端就不是HTML，而是XSLT，我可以把一些排序让客户端来实现从而减轻数据库压力，以及大量使用缓存来提升SEO质量，我们追求瞬间展示，为了达成无感知延迟，客户端所有页面都有ajax版本。（多年后的今天总结这个失败的架构： HTTP 1.1 大量使用 ajax，反而更耗费服务器资源，造成JVM的垃圾堆长期居高不下，而XSLT与ATOM分别造成了客户端的不可维护与服务端的复杂度大量提升，热点缓存只是一个简单的Map，查询时使用传统的for循环，没有cpu缓存优化可言，在遇到大量请求的时候，这个Map会进行反复的、高速的排序，造成指数级的CPU负担上涨）</p>
+<p>这个美好愿望的背后，我发现了一个细节：业界正在趋向于每隔一段时间出新一个框架，并且它们都不是Sun的实现，JNI什么的、EJB什么的、Hibernate、WebSphere、JBoss …… 我再次想起了当年在书城里遇到的那位高手在寻找BEA什么听不懂的东西，不止是他，这些东西我全都不懂，要不我还是返回 JScript吧，不过我还是想再坚持一下。</p>
+<p>而真正的十字路口，是看到某一期的《程序员》杂志里在介绍好几个Java项目，它们全是XML，我虽然看不懂那些整体架构，但是通过XML节点名称单词，我知道这是在创建各个对象、创建配置、组装零件、ORM映射数据库…… ， 纯XML，我多少也算是一个菜鸡JSP程序员，能识别什么是java语句，但是一句都没有看到，项目就这样架构了，我上CSDN去详细探查了一下风向，真是这样，又看到了关于好几个帖子里面，项目的XML占比已经超过了Java代码本身。这就是Java平台的业界前景吗？ 集合各家所长，居然发展到了这么高度智能化又前途无量的系统，但是我这个业余爱好者只知道 MyClass m = new MyClass() ，这样下去无论再怎么努力也是山鸡追不上凤凰的，这一年是2007年。 </p>
+<p>（今天的话来说，Sun缺乏稳固的基本盘，微软有Windows，你们有什么？ 就凭你Solaris吗？不愿领导方向，而是推行所谓的开放任由滋生，这叫白左，导致应用层面框架、JVM、开发平台、数据库、都被各大厂商平均分割，某个稍微有点话语权的厂商喝多了，拉了一套 JVM + XML 的开发方式把Java语言本身给架空了，也把我给吓退了，他们起了一个美名叫“配置驱动编程”，强类型语言的优势被一扫而空、运行期间充斥大量的XML解析带来的低效率、启动要配置半天的Hello World ……后来他们的收尾方式是以Code-First模式逐渐改回来，这个框架的名字我已经想不起了）</p>
+<p>这一盆冷水下来，火焰已经灭掉很多，我的能力不行是我个人的事，小网站依然要运转的，我还是以JSP模式硬着头皮搭建起来吧，可是我们在Godaddy 寻找支持JSP的空间时，每月400多块钱，最基本的JSP空间，不带数据库，需要附加数据库还要再加1280块/月，如果需要去除数据库的成本使用ACCESS，就需要JDBC需要设置桥接ODBC，但那要设置操作系统，我们作为虚拟空间用户，不要指望，再说了Godaddy的JSP空间所在操作系统是不是Windows都不知道，这个念头只能打消。 或者干脆就买VPS，我们之前买过VPS，每月800多块，但是他们的VPS太慢了，是不可接受的慢，内存又小只有512M，本机驱动整套生态系统的话，所剩内存只有几十M。卖家可以赚得盆满钵满，买家会被吸光骨髓，小型网站是玩不起的，更何况是我们这个不具备盈利能力的小网站呢。就这样，Java平台最后的火焰熄灭了。</p>
+<p>看花时花开，不看花时花灭，这叫仁者心动。看待失败也是这样，今天我看见某件事情的失败，它就是失败，过了一段时间，我看到另一件事情的成功，这件曾经失败的事情也成了后来成功的起点。 </p>
+<p>小网站继续以JScript 版本暂时运行着，它当前的空间技术支持ASP，也支持ASP.Net，我当初看不惯.Net，是因为 Java 是跨平台的，前景广阔，而你们这个也口口声声的跨平台，人尽皆知都是什么货色。今天面对着十倍以上以上的租金，以及自己被那么多看不懂的东西吓退，我想起了多年前的那颗夜明珠—— Visual Studio 2003，把它翻出来擦拭了一遍，塞进了光驱里。 </p>
+<p>往后一个月： Hello World 通过、WebForm 通过、WinForm 通过、WebService with WinForm 通过、WebService Cross WebForm 通过、ADO.Net with Access 通过、Introp with Com+ 通过 …… ，然后升级了 Visual Studio 2005，有了 var、有了泛型、有了匿名方法、有了母版页 ……，2005开始，微软开放下载了，这次不需要再掏25块钱给四眼仔了。</p>
+<p>更重要的，终于可以用少的东西控制多的东西：指针。 1995年我只能一次次在纸上推演的各种内存范例，十多年来终于有了机会能够应用到实践中，《C语言数据结构》中的很多知识都可以直接无痛迁移过来了。</p>
+<p>指针，才是这个故事的核心，现在仅仅第二篇，我就先卖个关子。</p>
+<p>至于跨平台，我听说民间自己搞了一个叫Mono的东西，以后有机会试一下看看，反转最近也用不到，走一步算一步吧。 </p>
+<p>进度很快，并不是我学得快，都是靠来自 Java 的根基，一看便懂，C井也变成了 C#。第二年 2008年，我拿了 ASP.NET MCTS，2009年，拿了 ASP.NET MCPD。14年前，那本《C语言程序设计》种下的众多种子，都在这些年里面生根发芽，小网站通过 WCF，达成了“服务器间Ajax”的设想，ADO.NET 提供了更佳性能的数据访问方案、并且支持Access，让我们的成本能够依然保持在每月80块钱，我也不再相信W3C那些嬉皮士们的各种所谓标准，回归简单的 HTML，比什么都长久，什么RSS、什么XHTML、什么XSLT…… 全都给我滚，他们制定什么标准时又没有叫我去开会。</p>
+<p>那本《C井程序设计语言》可没有Java和C的书籍那么受待见，它依然是一半用来垫桌脚，另一半拿来擦桌面。 微软出版社的 ADO.Net 和 ASP.Net 的正式教材代替了它。ADO.Net 相对于 ADO 的升级，是我直接就可以感受到的，它的两大数据对象，一个是离线的 DataTable ，另外一个在线式 的 DataReader性能更佳，特别是 Command 的 ExecuteScalar 方法也给我们简化了很多事情。</p>
+<p>小网站大量使用 RecordSet 的MoveNext、MovePrevious 和 AbsolutePosition，这是非常实用的功能，但却是 DataTable和DataReader不支持的，好在ADO与ADO.Net 并不是代替的关系，而是补充的关系，我眼睛不好，没看到微软说过要用ADO.Net 取代 ADO，我们依然可以通过 Com Introp 来调用传统 ADO：</p>
+<p>项目引用：Microsoft ActiveX Data Objects</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">ADODB</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Connection</span><span class="p">();</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">connectionString</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">Recordset</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Recordset</span><span class="p">();</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">rs</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;SELECT * FROM Users&quot;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span><span class="n">CursorTypeEnum</span><span class="p">.</span><span class="n">adOpenForwardOnly</span><span class="p">,</span><span class="n">LockTypeEnum</span><span class="p">.</span><span class="n">adLockReadOnly</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p>当年从VBScript转到 Jscript 的优势，除了大小写敏感以及分号结束显得很有面子之外，另外一个好处这时候提现出来了，C语言家族成员互相之间可以很容易的转换，现在除了一个 using 外，别的代码根本就不用修改，就可以在 C# 上编译通过了。就这样ADO与ADO.Net并存的局面一直保持在7.0版本的小网站中，一直保持到2014年 ASP.NET vNext 的出世。</p>
+<p>Com对象会在JIT环境中产生大量GC，每调用一次就会产生一次，但这在当时的环境来说，满屏的动态字符串造就了JIT承载着一个大型垃圾堆，多塞一个Com垃圾进去丝毫不影响。</p>
+<p>我认可ADO.NET , 并不代表也会认可ASP.Net，WebForm 的那一套服务端控件架构很好，又找回了 Dreamweaver 的感觉，主要还是我的能力不行，高攀不上，WebForm的客户端HTML代码我是看不懂的，也不想去懂，所以除了在考证与工作中使用到之外，我们的小网站是不会接纳这套东西的，我们依然是 Response.Write， 同一时期，动网论坛.Net和DiscuzNT也发扬起来了，我查看了一下它们的代码架构，果然他们的能力也不行，也高攀不上 WebForm。</p>
+<p>直到MVC的出现，别的先不谈，我先看HTML代码，很干净，第一感觉是确实有必要评估一下，然后就开始了研究起模型-视图-控制器的关系，那一个个&lt;%= %&gt;，这就是ASP的变种，我就太熟悉不过了，只是当时，理解控制器中创建一个模型，再把模型传递到视图中，是要花一些时间的，同时我也有心理阴影，严防再来一次JNI什么的、EJB什么的、JBoss什么的……。</p>
+<p>MVC可以搭载一套微软开发的Ajax插件，这个名字我想不起了，有一套客户端javascript代码，服务端只需要插入很少的代码就可以建立连接了，这在工作中以及业余的小网站维护中极大的简化了架构，过了不久以后，MVC框架迎来了Razor。</p>
+<p>我认同一个框架，不是看它运行性能快不快、也不是看它的学习难度，就看它的发展前景，我虽然全面切换到Razor，是因为官方推荐以及它的代码显得更简洁一些，但并不是100%认同，因为Razor本身创建了一门小型的新语言，能c#，我都尽量使用C#，尽可能避免依赖Razor。 </p>
+<p>说完了Web，就说Application，时间也来到了.Net Framework 3.0-3.5的时代，WCF给我直接带来了很大的收益，WPF引入了新的桌面开发框架、LINQ加速了开发时效，这都是好事，但是 .Net Framework 的普及速度远远更不上它的更新速度，在满街的Windows XP时，也许我们可以通过在安装时嵌入 .Net Framework 2.0 的方式，解决部署问题，毕竟也就23M大小，但是3.0以及3.5， 那是300M - 600M 的体量，不可能做嵌入部署的，虽然3.5有一种裁剪模式，但是如果依赖的API过多的话，也等同于没裁剪，唯一的解法就是AOT，或者绿色部署，这两点微软都视而不见，他们认为天下所有的电脑都是最新版本的Windows，所有的Windows 用户都会安装有最新的.Net Framework，导致了那时候开发人员流行引用飞信的一个Dll来解决这个事。</p>
+<p>在移动客户端，塞班、iPhone、安卓、Windows Mobile 四分天下，我尝试过开发塞班的程序，太复杂了只能放弃，iPhone 平台也尝试过，也太复杂了，可是我的手机就是 3GS，它的界面流畅度，它就是毋庸置疑的明日之星，安卓不可能了，我已经放弃了Java语言， 至于 Windows Mobile ，我已经在各处得到消息，它会被另一种全新的操作系统代替，它的名字叫 Windows Phone 7.0，出世版本号就是 7，继承自 Mobile 6.x。</p>
+<p>后来我在淘宝上买到了一款三星的 Windows Phone 手机，Omnia 7，另外还买了一个很小的Mini USB口的PJ工具，把它插入手机就可以越狱，然后就可以自己部署任意程序上去了。这个Windows Phone 的界面流畅度和3GS比起来，完全不相上下，当时还看到新闻，微软拿 Windows Phone 手机与 iPhone 4 在街头做活动，如果谁发现相同的应用程序iPhone版本比WindowsPhone版本流畅，当场给一个很大的奖励（具体是什么想不起了，反正是很昂贵的那种）  。既然微软敢说这个大话，那么，我这个.Net程序员也就敢跟着下注。</p>
+<p>刚把MVC研究透彻不久，我接到一个当年天天一起出入电子游戏室的老乡的电话，前面忘了说了，我第一次拆解电脑、安装windows95、也都是他教的，可他这次和我说的话却是：“来拉萨玩吗？”</p>
+<p>他把我吓到了，那可是西藏，这两个字给我的第一印象与感觉是他脑子有病，但又不好拒绝他，我就说“现在还有点事情要忙，应该两个星期后可能可以吧”。 反正两个星期后他肯定找到别人去和他玩了，那时候早就把我忘了。</p>
+<p>但是两个星期后电话再次响起来，他应该是没找到人和他玩，谁会神经病去那种地方呢，这次我逃不过去了。</p>
+<p>几天以后，在一个漆黑的早上，重庆的机场一辆波音737起飞了，目的地不是北京，也不是广州，也不是桂林，更不是成都，这是拉萨，一个吃了豹子胆都不敢想的地方，上飞机前我一直在想：如果不是我嘴巴贱答应了他的话，重新让我选，我宁愿回去研究那些JNI什么的、EJB什么的……</p>
+<p>两个小时后，飞机的窗外是一片片橙黄的山峦，那些山上是不长树的，缓慢降落时，一条比天空还碧蓝的大河伴随着峡谷映入眼帘，白色的河滩上一排排金色的树林快速闪过，这是自然界的互补色，色轮上的位置是与我们生活过的地方完全相反的。</p>
+<p>2009年11月底，我带着一台佳能EOS5+35-70镜头，几卷Ektar100，一部惠普CQ40笔记本电脑，一本《C#程序设计语言》（新买的，不是当年那本垫桌脚的c井），走出了山南贡嘎机场。</p>
+<p>第一章《从井到Sharp》，完。请期待第二章：安纳普尔那的雨季。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../20240721/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT。（一，从井到Sharp）">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                我的编程经历，从天桥地摊Basic到西藏阿里的.Net AOT。（一，从井到Sharp）
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/liangyichen" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
